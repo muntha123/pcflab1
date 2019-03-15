@@ -21,9 +21,9 @@ echo "$CF_SUB_COMMAND the app"
 for app in $applications
 	do
 		eval "cf $CF_SUB_COMMAND $app"
-		status = $(echo $(cf app $app  | grep 'requested state:'| awk '{print $3}'))
+		status = $(cf app $app  | grep 'requested state:'| awk '{print $3}')
 	done
-	restart_fun () {
+	restart_fun (){
   		echo cf $CF_SUB_COMMAND $app
   		exit ()
 	}
