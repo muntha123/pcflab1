@@ -19,14 +19,16 @@ applications=`cat pcflab/start-apps/app-list.json | jq -r '.[].application'`
 
 echo "$CF_SUB_COMMAND the app"
 
+restart_fun(){
+	echo "cf $CF_SUB_COMMAND $app"
+	}
+	
 for app in $applications
 	do
 		eval "cf $CF_SUB_COMMAND $app"
-		status=$(cf app $app  | grep 'requested state:'| awk '{print $3}')
-	restart_fun(){
-  		echo "cf $CF_SUB_COMMAND $app"
-	}
-	if [ $STATUS!="started" ]
+		status=$(cf app $app  | grep 'requested state:'| awk '{print $3}')	
+		
+	if [ "$STATUS" = "started" ]
 	then 
 		echo "$app is started"
 	else
@@ -37,4 +39,3 @@ for app in $applications
 		}
 	fi
 	done
-	
