@@ -25,14 +25,15 @@ for app in $applications
 	restart_fun(){
   		echo "cf $CF_SUB_COMMAND $app"
 	}
-	COUNT=5
-	for ((i=0;i<$COUNT;i++))
-	{
-	if [ $status == "started" ]
+	if [ $STATUS -eq 'started' ]
 		then 
 			echo "$app is started"
 		else
+			COUNT = 5
+			for ((i=0;i<$COUNT;i++))
+			{
 			restart_fun
+			}
 	fi
-	}
 	done
+	
