@@ -14,7 +14,7 @@ echo "Target Org and Space"
 org_space="cf target -o $ORG -s $SPACE"
 eval $org_space
 
-applications=`cat misc-repo/start-apps/app-list.json | jq -r '.[].application'`
+applications=`cat pcflab/start-apps/app-list.json | jq -r '.[].application'`
 
 restart_fun ()
 {
