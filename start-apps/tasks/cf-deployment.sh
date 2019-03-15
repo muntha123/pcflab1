@@ -16,12 +16,6 @@ eval $org_space
 
 applications=`cat pcflab/start-apps/app-list.json | jq -r '.[].application'`
 
-restart_fun ()
-{
-  echo cf $CF_SUB_COMMAND $app
-  exit ()
-}
-
 echo "$CF_SUB_COMMAND the app"
 
 for app in $applications
@@ -29,6 +23,11 @@ for app in $applications
 		eval "cf $CF_SUB_COMMAND $app"
 		status = '(echo $(cf app $app  | grep 'requested state:'| awk '{print $3}'))'
 	done
+	restart_fun ()
+	{
+  		echo cf $CF_SUB_COMMAND $app
+  		exit ()
+	}
 	count = 5
 	for((i=0;i<$count;i++))
 	{
