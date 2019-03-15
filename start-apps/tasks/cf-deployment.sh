@@ -25,7 +25,6 @@ for app in $applications
 	done
 	restart_fun(){
   		echo cf $CF_SUB_COMMAND $app
-  		exit ()
 	}
 	count = 5
 	for((i=0;i<$count;i++))
