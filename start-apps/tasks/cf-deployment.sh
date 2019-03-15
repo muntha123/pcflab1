@@ -34,7 +34,7 @@ for app in $applications
 		break
 	else
 		echo "$STATUS"
-		echo "App not started, trying to restatrt. Attmept $i" | mailx -s "Restart APP $app" narendra.meduri@cognizant.com
+		echo "App not started, trying to restatrt. Attmept $i" | mailx -s "Restart APP $app" ravanaiahweblogic@gmail.com
 		for ((i=0;i<$COUNT;i++))
 		{
 		restart_fun
