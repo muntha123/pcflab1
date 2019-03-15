@@ -26,7 +26,7 @@ for app in $applications
 	restart_fun(){
   		echo cf $CF_SUB_COMMAND $app
 	}
-	COUNT = 5
+	COUNT=5
 	for ((i=0;i<$COUNT;i++))
 	{
 	if [ $status -eq 'started' ]
