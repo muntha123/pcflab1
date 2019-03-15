@@ -30,6 +30,7 @@ for app in $applications
 	then 
 		echo "$app is started"
 	else
+		echo "$STATUS"
 		for ((i=0;i<$COUNT;i++))
 		{
 		restart_fun
