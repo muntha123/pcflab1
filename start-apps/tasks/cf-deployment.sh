@@ -31,6 +31,7 @@ for app in $applications
 	if [ "$STATUS" = "started" ]
 	then 
 		echo "$app is started"
+		break
 	else
 		echo "$STATUS"
 		for ((i=0;i<$COUNT;i++))
