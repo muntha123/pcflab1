@@ -22,7 +22,6 @@ for app in $applications
 	do
 		eval "cf $CF_SUB_COMMAND $app"
 		status=$(cf app $app  | grep 'requested state:'| awk '{print $3}')
-	done
 	restart_fun(){
   		echo "cf $CF_SUB_COMMAND $app"
 	}
@@ -36,3 +35,4 @@ for app in $applications
 			restart_fun
 	fi
 	}
+	done
