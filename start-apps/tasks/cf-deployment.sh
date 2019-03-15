@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -x
+COUNT=5
 
 target="cf api $API_ENDPOINT --skip-ssl-validation"
 #echo $target
@@ -26,14 +27,13 @@ for app in $applications
   		echo "cf $CF_SUB_COMMAND $app"
 	}
 	if [ $STATUS == "started" ]
-		then 
-			echo "$app is started"
-		else
-			COUNT = 5
-			for ((i=0;i<$COUNT;i++))
-			{
-			restart_fun
-			}
+	then 
+		echo "$app is started"
+	else
+		for ((i=0;i<$COUNT;i++))
+		{
+		restart_fun
+		}
 	fi
 	done
 	
