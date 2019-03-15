@@ -24,12 +24,12 @@ for app in $applications
 		status=$(cf app $app  | grep 'requested state:'| awk '{print $3}')
 	done
 	restart_fun(){
-  		echo cf $CF_SUB_COMMAND $app
+  		echo "cf $CF_SUB_COMMAND $app"
 	}
 	COUNT=5
 	for ((i=0;i<$COUNT;i++))
 	{
-	if [ $status -eq 'started' ]
+	if [ $status == "started" ]
 		then 
 			echo "$app is started"
 		else
