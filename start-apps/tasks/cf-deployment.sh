@@ -26,7 +26,7 @@ for app in $applications
 	restart_fun(){
   		echo "cf $CF_SUB_COMMAND $app"
 	}
-	if [ $STATUS="started" ]
+	if [ $STATUS!="started" ]
 	then 
 		echo "$app is started"
 	else
