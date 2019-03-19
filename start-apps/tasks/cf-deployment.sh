@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -x
-#COUNT=5
+COUNT=5
 
 target="cf api $API_ENDPOINT --skip-ssl-validation"
 #echo $target
@@ -21,14 +21,15 @@ echo "$CF_SUB_COMMAND the app"
 
 for app in $applications
         do
-                for j in 1 2 3 4 5
+                cf $CF_SUB_COMMAND $app
+                for j in $COUNT
                 do 
-                         #cf start $app
+                         
                          STATUS=`cf app $app|grep -e "requested state:"|awk '{print  $3}'`
                          if [[ $STATUS == "stopped" ]]
                          then
                                 echo -e "App is still down\n"
-                                if [[ $j == 5 ]]
+                                if [[ $j == $COUNT ]]
                                 then
                                         echo "Triggering a mail to user :ravanaiah (ravanaiahweblogic@gail.com)"
                                         mail -s "automation to bring up app failed for $app app" ravanaiahweblogic@gmail.com <<< "automation to bring up this $app app got failed"
